@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <div class="head">
+        <h1>My Personal Website</h1>
+        <p>Welcome to my Personal Student Portal</p>
+    </div>
+    <nav class="links">
+        <a href="home.html">Home</a>
+        <a href="registration.html">Registration</a>
+        <a href="grades.html">Grade</a>
+        <a href="profile.html">Profile</a>
+    </nav>
+
+    <div class="card">
+       
+        <justify>
+            
+        <caption><h2>Student Registration Form</h2></caption>
+        <form>
+            Student Name: 
+            <input type="text" name="studentname"/>
+            <br>
+            Email: 
+            <input type="text" name="email"/>
+            <br>
+            Password: <input type="password" name="password"/>
+            
+    </form>
+    <br>
+        <form><caption>Gender</caption><br>
+            <input type="radio" name="Gender" value="Male">Male
+            <input type="radio" name="Gender" value="Female">Female
+          
+        </form>
+        <br>
+
+        <form>
+            <caption>Course</caption><br>
+            <select name="dropdown">
+                <option value = "BSIT" selected>BSIT</option>
+                <option value = "BSCS" selected>BSCS</option>
+                <option value = "BSTM" selected>BSTM</option>
+            </select>
+        </form>
+            <br>
+
+        <form>
+            <caption>Skills</caption><br>
+            <input type="checkbox" Name="HTML" value="on">HTML
+            <input type="checkbox" Name="CSS" value="on">CSS
+            <input type="checkbox" Name="JavaScript" value="on">JavaScript
+            
+        </form>
+        <br>
+
+        <form><caption>Upload file</caption><br>
+            <input type="file"
+            name="file upload" accept="image/*"/>
+        </form>
+
+        <br>
+        <form>
+            Additions: <br/><textarea rows="5" cols="50" name="description" placeholder="Additions.."></textarea>
+            <br>
+        </form>
+        <br>
+        <form>
+            <input type="submit" name="submit" value="Submit"/>
+            <input type="button" name="ok" value="OK"/>
+            
+        
+        </form>
+   
+    </justify>
+    </div>
+    
+</body>
+</html>

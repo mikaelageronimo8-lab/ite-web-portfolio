@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <header style="background-color: brown; text-align:center">
+        <h1 style="padding: 8px; margin: 1px;">Registration Form</h1>
+        <p style="padding: 8px; margin: 1px; font-size:large;">Welcome To My <i>Website</i></p>
+    </header>
+    <hr color="black">
+
+    <body bgcolor="maroon">
+     
+        <div style="background-color: brown; display:flex; justify-content:center; gap: 30px">
+        <a href="Home.html">Home Form</a>
+        <a href="Registration.html">Registration Form</a>
+        <a href="Grade.html">Grade Table</a>
+        <a href="MyProfile.html">My Profile</a>
+</div>
+<hr color="black">
+    <form style="background-color: brown;">
+        <h3>
+            Student Name: <input type="text" name="student_name"/>
+            
+            <br><br>
+            Student Number: <input type="number" name="student_number"/>
+            <br><br>
+            Email: <input type="text" name="email"/>
+        </h3>
+    </form>
+    <hr color="black">
+
+    <h3>Gender</h3>
+    <form>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+     </form>
+        
+     <hr color="black">
+
+     <h3>Course</h3>
+     <form>
+        <select name="dropdown">
+        <option value="BSCS" selected>BSCS</option>
+        <option value="BSIT">BSIT</option>
+        </select>
+        </form>
+
+        <hr color="black">   
+
+        <h3>Skills</h3>
+        <form>
+            <input type="checkbox" name="HTML" value="on"> HTML
+            <input type="checkbox" name="CSS" value="on"> CSS
+            <input type="checkbox" name="JavaScript" value="on"> JavaScript
+            </form>
+    
+            
+        <hr color="black"> 
+
+        <h4>Upload File</h4>
+            <form>
+                <input type="file" name="fileupload" accept="image/*" />
+                </form>
+       
+                <hr color="black"> 
+
+                <form>
+                    <input type="submit" name="submit" value="Submit" />
+                    <input type="reset" name="reset"  value="Reset" />
+                    <input type="button" name="ok" value="OK"  />
+                    <input type="image" name="imagebutton" src="/html/images/logo.png" />
+                    </form>
+
+                    
+                    <hr color="black"> 
+
+
+                    <form>
+                    Description : <br />
+                    <textarea rows="5" cols="50" name="description" placeholder=” Enter description here...”></textarea>
+                    </form>
+                             
+
+</body>
+</html>
