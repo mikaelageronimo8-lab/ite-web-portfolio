@@ -1,8 +1,3 @@
-
-/* ==============================
-   LIGHT AND DARK MODE
-============================== */
-
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = themeToggle.querySelector("i");
 const themeLabel = themeToggle.querySelector("span");
@@ -20,24 +15,20 @@ let isDark = savedTheme === "dark";
 function updateTheme() {
     document.body.classList.toggle("dark-mode", isDark);
 
-    // Change the main picture
     heroPhoto.src = isDark ? darkPicture : lightPicture;
 
     heroPhoto.alt = isDark
         ? "Mikaela's dark mode profile photo"
         : "Mikaela's light mode profile photo";
 
-    // Update the toggle icon
     themeIcon.className = isDark
         ? "fa-solid fa-sun"
         : "fa-solid fa-moon";
 
-    // Update the button label
     themeLabel.textContent = isDark
         ? "Light mode"
         : "Dark mode";
 
-    // Update accessibility label
     themeToggle.setAttribute(
         "aria-label",
         isDark
@@ -45,7 +36,6 @@ function updateTheme() {
             : "Switch to dark mode"
     );
 
-    // Save the selected theme
     localStorage.setItem(
         "mika-portfolio-theme",
         isDark ? "dark" : "light"
@@ -53,20 +43,15 @@ function updateTheme() {
 }
 
 
-// Toggle theme when clicked
 themeToggle.addEventListener("click", () => {
     isDark = !isDark;
     updateTheme();
 });
 
 
-// Apply the saved theme on page load
 updateTheme();
 
 
-/* ==============================
-   SECTION REVEAL ANIMATION
-============================== */
 
 const revealSections = document.querySelectorAll(".reveal-section");
 
@@ -96,9 +81,6 @@ if ("IntersectionObserver" in window) {
 }
 
 
-/* ==============================
-   BACK TO TOP BUTTON
-============================== */
 
 const backToTop = document.getElementById("backToTop");
 
@@ -117,9 +99,6 @@ backToTop.addEventListener("click", () => {
 });
 
 
-/* ==============================
-   NAVIGATION ANIMATIONS
-============================== */
 
 document.querySelectorAll(
     ".feature-card, .navbar a, .pill-button"
