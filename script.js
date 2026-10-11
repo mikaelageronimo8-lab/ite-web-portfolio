@@ -1,49 +1,73 @@
 
+/* ==============================
+   LIGHT AND DARK MODE
+============================== */
+
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = themeToggle.querySelector("i");
 const themeLabel = themeToggle.querySelector("span");
 
-// Load the saved theme
+const heroPhoto = document.getElementById("heroPhoto");
+
+const lightPicture = "profile2.png";
+const darkPicture = "picko.jpg";
+
 const savedTheme = localStorage.getItem("mika-portfolio-theme");
 
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-}
+let isDark = savedTheme === "dark";
 
-updateThemeButton();
 
-// Light mode and dark mode toggle
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
+function updateTheme() {
+    document.body.classList.toggle("dark-mode", isDark);
 
-    const theme = document.body.classList.contains("dark-mode")
-        ? "dark"
-        : "light";
+    // Change the main picture
+    heroPhoto.src = isDark ? darkPicture : lightPicture;
 
-    localStorage.setItem("mika-portfolio-theme", theme);
+    heroPhoto.alt = isDark
+        ? "Mikaela's dark mode profile photo"
+        : "Mikaela's light mode profile photo";
 
-    updateThemeButton();
-});
-
-function updateThemeButton() {
-    const isDark = document.body.classList.contains("dark-mode");
-
+    // Update the toggle icon
     themeIcon.className = isDark
         ? "fa-solid fa-sun"
         : "fa-solid fa-moon";
 
+    // Update the button label
     themeLabel.textContent = isDark
         ? "Light mode"
         : "Dark mode";
 
+    // Update accessibility label
     themeToggle.setAttribute(
         "aria-label",
-        isDark ? "Switch to light mode" : "Switch to dark mode"
+        isDark
+            ? "Switch to light mode"
+            : "Switch to dark mode"
+    );
+
+    // Save the selected theme
+    localStorage.setItem(
+        "mika-portfolio-theme",
+        isDark ? "dark" : "light"
     );
 }
 
 
-// Fade-in animation for sections
+// Toggle theme when clicked
+themeToggle.addEventListener("click", () => {
+    isDark = !isDark;
+    updateTheme();
+});
+
+
+// Apply the saved theme on page load
+updateTheme();
+
+
+/* ==============================
+   SECTION REVEAL ANIMATION
+============================== */
+
 const revealSections = document.querySelectorAll(".reveal-section");
 
 if ("IntersectionObserver" in window) {
@@ -72,7 +96,10 @@ if ("IntersectionObserver" in window) {
 }
 
 
-// Back-to-top button
+/* ==============================
+   BACK TO TOP BUTTON
+============================== */
+
 const backToTop = document.getElementById("backToTop");
 
 window.addEventListener("scroll", () => {
@@ -90,17 +117,24 @@ backToTop.addEventListener("click", () => {
 });
 
 
-// Smooth navigation and card animation
+/* ==============================
+   NAVIGATION ANIMATIONS
+============================== */
+
 document.querySelectorAll(
     ".feature-card, .navbar a, .pill-button"
 ).forEach((link) => {
 
     link.addEventListener("click", () => {
-        const target = document.querySelector(
-            link.getAttribute("href")
-        );
+        const href = link.getAttribute("href");
 
-        if (target) {
+        if (!href || !href.startsWith("#")) {
+            return;
+        }
+
+        const target = document.querySelector(href);
+
+        if (target && target.classList.contains("reveal-section")) {
             target.classList.remove("is-visible");
 
             window.setTimeout(() => {
@@ -108,5 +142,4 @@ document.querySelectorAll(
             }, 80);
         }
     });
-
 });
