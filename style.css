@@ -260,7 +260,7 @@ a {
   transform: rotate(-4deg); 
 }
 
-.quick-links { 
+.nav { 
   display: grid; 
   grid-template-columns: repeat(3, minmax(0, 1fr)); 
   align-items: center; 
@@ -383,7 +383,7 @@ a {
   align-items: center; 
 }
 
-```css
+
 .about-photo-wrap {
   position: relative;
   padding: 20px;
