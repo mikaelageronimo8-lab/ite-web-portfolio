@@ -5,7 +5,7 @@ const themeLabel = themeToggle.querySelector("span");
 const heroPhoto = document.getElementById("heroPhoto");
 
 const lightPicture = "profile2.png";
-const darkPicture = "picko1.jpg";
+const darkPicture = "picko1.jpeg";
 
 const savedTheme = localStorage.getItem("mika-portfolio-theme");
 
