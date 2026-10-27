@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
   --bg: #fff8fc;
@@ -790,82 +791,251 @@ footer span {
     transition-duration: .01ms !important;
   }
 }
-```
 
-
-
-:root {
-    --bg: #fff8fc;
-    --surface: #ffffff;
-    --surface-pink: #fff0f7;
-
-    --pink: #f3a9ce;
-    --pink-deep: #d96fa8;
-    --pink-soft: #fbe0ed;
-
-    --blue: #648ba2;
-    --text: #426a80;
-    --muted: #71828c;
-
-    --border: #f1b5d3;
-    --shadow: 0 12px 32px rgba(150, 88, 124, 0.12);
-}
-
-
-body.dark-mode {
-    --bg: #201b2b;
-    --surface: #2b2438;
-    --surface-pink: #35283e;
-
-    --pink: #d982b4;
-    --pink-deep: #f2a7d0;
-    --pink-soft: #493047;
-
-    --blue: #a9cce0;
-    --text: #f7eaf4;
-    --muted: #c8b9ca;
-
-    --border: #75506e;
-    --shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
-}
-
-
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
-
-body {
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-
-    transition:
-        background 0.35s ease,
-        color 0.35s ease;
-}
-
+/* =====================================================
+   SPIDER-MAN DARK MODE  (only applies when body.dark-mode)
+   Light mode above is untouched.
+   ===================================================== */
 
 .hero-photo {
-    position: relative;
-    z-index: 1;
-
-    width: 235px;
-    height: 235px;
-
-    object-fit: cover;
-    border-radius: 46% 46% 42% 42%;
-
-    border: 8px solid var(--surface);
-    box-shadow: var(--shadow);
-
-    animation: float 4s ease-in-out infinite;
-
-    transition:
-        border-color 0.35s ease,
-        opacity 0.3s ease;
+  transition: border-color .35s ease, opacity .3s ease;
 }
 
+.web-layer {
+  display: none;
+}
 
+body.dark-mode {
+  --bg: #07070b;
+  --surface: #0f1018;
+  --surface-pink: #0c0c13;
+  --pink: #e11d2e;
+  --pink-deep: #ff4d5a;
+  --pink-soft: #11111a;
+  --blue: #3a6bff;
+  --text: #f3f3f7;
+  --muted: #8e90a0;
+  --border: rgba(255, 255, 255, .12);
+  --shadow: 0 12px 32px rgba(0, 0, 0, .5);
+  font-family: 'DM Sans', 'Nunito', 'Segoe UI', sans-serif;
+}
 
+body.dark-mode ::selection {
+  background: #e11d2e;
+  color: #fff;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+  font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif;
+  letter-spacing: -.02em;
+}
+
+/* header */
+body.dark-mode .site-header {
+  background: rgba(7, 7, 11, .72);
+  border-bottom-color: rgba(225, 29, 46, .45);
+}
+
+body.dark-mode .brand {
+  color: var(--text);
+}
+
+body.dark-mode .brand::before {
+  content: "\f717";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 22px;
+  color: #e11d2e;
+}
+
+body.dark-mode .brand small {
+  color: var(--muted);
+}
+
+body.dark-mode .navbar a:hover {
+  color: var(--pink-deep);
+}
+
+body.dark-mode .theme-toggle:hover {
+  border-color: var(--pink-deep);
+}
+
+/* hero: web that appears around the cursor */
+body.dark-mode .landing {
+  position: relative;
+  --mx: 72%;
+  --my: 40%;
+}
+
+body.dark-mode .web-layer {
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+  color: #fff;
+  -webkit-mask-image: radial-gradient(circle 340px at var(--mx) var(--my), #000 0, rgba(0,0,0,.35) 55%, transparent 100%);
+  mask-image: radial-gradient(circle 340px at var(--mx) var(--my), #000 0, rgba(0,0,0,.35) 55%, transparent 100%);
+}
+
+body.dark-mode .web-layer svg {
+  width: 100%;
+  height: 100%;
+}
+
+body.dark-mode .landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(225, 29, 46, .2), transparent 70%);
+}
+
+body.dark-mode .intro,
+body.dark-mode .landing-art {
+  position: relative;
+  z-index: 1;
+}
+
+body.dark-mode .cloud,
+body.dark-mode .sparkle,
+body.dark-mode .intro h1 .fa-paw {
+  display: none;
+}
+
+body.dark-mode .intro h1 {
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: .98;
+  font-size: clamp(40px, 6.2vw, 76px);
+}
+
+body.dark-mode .intro h1 br {
+  display: none;
+}
+
+body.dark-mode .intro h1 span {
+  display: block;
+  margin-top: 16px;
+  font-size: clamp(16px, 1.7vw, 22px);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--muted);
+}
+
+body.dark-mode .pill-button {
+  background: #e11d2e;
+  border-radius: 999px;
+  padding: 14px 26px;
+  box-shadow: none;
+  transition: transform .25s, box-shadow .25s;
+}
+
+body.dark-mode .pill-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px -6px #e11d2e;
+}
+
+body.dark-mode .landing-art::before {
+  border-radius: 34px;
+  transform: rotate(-6deg);
+  opacity: .8;
+  background: linear-gradient(160deg, #e11d2e, transparent 48%, #3a6bff);
+}
+
+body.dark-mode .hero-photo {
+  border-radius: 28px;
+  border: 1px solid var(--border);
+}
+
+body.dark-mode .feature-card {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+}
+
+body.dark-mode .feature-card:hover {
+  border-color: var(--pink-deep);
+  box-shadow: 0 20px 44px -22px #e11d2e;
+}
+
+body.dark-mode .doodle {
+  background: rgba(225, 29, 46, .12);
+  color: var(--pink-deep);
+}
+
+body.dark-mode .fa-cat::before {
+  content: "\f007";
+}
+
+body.dark-mode .fa-dog::before {
+  content: "\f5fc";
+}
+
+/* sections */
+body.dark-mode .eyebrow {
+  color: var(--pink-deep);
+}
+
+body.dark-mode .about-photo-wrap {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+body.dark-mode .panel,
+body.dark-mode .skill-tile,
+body.dark-mode .contact-tile,
+body.dark-mode .project-tile {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+body.dark-mode .skill-tile,
+body.dark-mode .contact-tile,
+body.dark-mode .project-tile,
+body.dark-mode .panel {
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+
+body.dark-mode .skill-tile:hover,
+body.dark-mode .contact-tile:hover,
+body.dark-mode .project-tile:hover {
+  border-color: var(--pink-deep);
+  box-shadow: 0 20px 44px -24px #e11d2e;
+}
+
+body.dark-mode .skill-tile i {
+  color: var(--pink-deep);
+}
+
+body.dark-mode .project-tile img {
+  transition: transform .6s;
+}
+
+body.dark-mode .project-tile {
+  overflow: hidden;
+}
+
+body.dark-mode .project-tile:hover img {
+  transform: scale(1.05);
+}
+
+body.dark-mode .project-info a {
+  border-bottom: 1px solid var(--pink-deep);
+  padding-bottom: 2px;
+}
+
+body.dark-mode .projects-section {
+  border-color: var(--border);
+}
+
+body.dark-mode footer {
+  border-top: 1px solid var(--border);
+}
+
+body.dark-mode .back-to-top {
+  background: #e11d2e;
+}
