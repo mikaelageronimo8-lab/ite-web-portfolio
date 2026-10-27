@@ -122,3 +122,53 @@ document.querySelectorAll(
         }
     });
 });
+
+
+
+/* Spider-Man dark mode: web na lumalabas sa paligid ng cursor (hero section) */
+const landing = document.getElementById("homecon");
+
+if (landing) {
+    const cx = 500, cy = 380, spokes = 16;
+    let web = "";
+
+    for (let i = 0; i < spokes; i++) {
+        const a = (i / spokes) * Math.PI * 2;
+        web += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(a) * 1100).toFixed(1)}" y2="${(cy + Math.sin(a) * 1100).toFixed(1)}"/>`;
+    }
+
+    for (let r = 70; r <= 1000; r += r < 300 ? 70 : 110) {
+        let d = "";
+        for (let j = 0; j <= spokes; j++) {
+            const a = (j / spokes) * Math.PI * 2;
+            const x = cx + Math.cos(a) * r;
+            const y = cy + Math.sin(a) * r;
+
+            if (j === 0) {
+                d += `M${x.toFixed(1)} ${y.toFixed(1)}`;
+            } else {
+                const m = ((j - 0.5) / spokes) * Math.PI * 2;
+                const k = r * 0.93;
+                d += ` Q${(cx + Math.cos(m) * k).toFixed(1)} ${(cy + Math.sin(m) * k).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)}`;
+            }
+        }
+        web += `<path d="${d}"/>`;
+    }
+
+    const layer = document.createElement("div");
+    layer.className = "web-layer";
+    layer.setAttribute("aria-hidden", "true");
+    layer.innerHTML = `<svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1">${web}</svg>`;
+    landing.prepend(layer);
+
+    const moveWeb = (x, y) => {
+        const box = landing.getBoundingClientRect();
+        landing.style.setProperty("--mx", `${x - box.left}px`);
+        landing.style.setProperty("--my", `${y - box.top}px`);
+    };
+
+    landing.addEventListener("pointermove", (e) => moveWeb(e.clientX, e.clientY));
+    landing.addEventListener("touchmove", (e) => {
+        moveWeb(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+}
